@@ -30,6 +30,10 @@ pipeline {
     stage('Deploy_to_Prod') {
       steps {
         echo "This is Deploy to Prod Stage"
+        timeout(time: 30, unit: 'SECONDS') {
+        input 'Do want to deploy it to Production ?'
+        }
+        build 'deploy_dev'
       }  
     }
    } 
